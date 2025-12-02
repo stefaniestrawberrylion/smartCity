@@ -1,0 +1,17 @@
+Dependencies
+
+/node_modules
+
+Logs
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+OS-specifieke bestanden (zoals die van IDE's)
+
+.DS_Store
+.idea
+*.suo
+*.user
+*.bak

@@ -1,0 +1,146 @@
+/* Algemene stijlen */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f0f0f0; /* Lichte achtergrond */
+    color: #333;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+/* Header */
+.dashboard-header {
+    background-color: #38761d; /* Donkergroen */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Kaarten Rij (Flexbox) */
+.cards-row {
+    display: flex;
+    gap: 20px; /* Ruimte tussen de kaarten */
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #e5ffe0; /* Lichtgroene/Beige achtergrond */
+    padding: 15px;
+    border-radius: 5px;
+    flex: 1; /* Zorgt ervoor dat kaarten even breed zijn */
+    min-width: 200px; /* Minimale breedte voor kaarten */
+}
+
+.card-empty {
+    background-color: #d9e3d6; /* Beige/Grijze kleur uit de afbeelding */
+}
+
+.card-title {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    background-color: white;
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 1.2em;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.button {
+    background-color: #6aa84f; /* Groene knop */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+/* Hoofdcontent Rij (Flexbox) */
+.main-content-row {
+    display: flex;
+    gap: 20px;
+}
+
+/* Grafiek Gebied */
+.chart-area {
+    flex: 3; /* Neemt meer ruimte in dan de sensoren-lijst */
+    background-color: #ececec; /* Grijze achtergrond voor de grafiek */
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end; /* Zorgt ervoor dat de balken op de bodem beginnen */
+    justify-content: space-around;
+}
+
+/* Representatie van de balken */
+.bar-chart-representation {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    height: 100%;
+    width: 80%; /* Vul niet de volledige breedte, zodat er ruimte is */
+    padding-bottom: 10px;
+}
+
+.bar {
+    width: 20%;
+    /* De hoogte en kleur zijn een schatting van de afbeelding */
+    background-color: #674ea7;
+    border-radius: 2px;
+}
+
+.bar-1 { height: 60%; background-color: #993399; } /* Paars */
+.bar-2 { height: 90%; background-color: #674ea7; } /* Donkerblauw/Paars */
+.bar-3 { height: 50%; background-color: #f1c232; } /* Oranje */
+.bar-4 { height: 65%; background-color: #cc0000; } /* Rood/Bordeaux */
+
+
+/* Sensoren Lijst */
+.sensors-list {
+    flex: 1; /* Neemt minder ruimte in dan de grafiek */
+    background-color: #d9e3d6; /* Beige/Grijze achtergrond */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sensor-item {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status.active {
+    color: #6aa84f; /* Groen */
+    font-weight: bold;
+}
+
+.status.inactive {
+    color: #cc0000; /* Rood */
+    font-weight: bold;
+}
