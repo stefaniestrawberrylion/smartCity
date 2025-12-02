@@ -26,14 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    // 2. Functies voor het Bijwerken van de UI
-
-    /**
-     * Telt geanimeerd naar het gewenste eindgetal.
-     * @param {HTMLElement} element - Het HTML-element dat bijgewerkt moet worden.
-     * @param {number} endValue - De uiteindelijke waarde.
-     * @param {number} duration - De animatieduur in milliseconden.
-     */
+    //Functies voor het Bijwerken van de UI
     function animateCount(element, endValue, duration = 1000) {
         const startValue = 0;
         let startTime = null;
@@ -49,65 +42,51 @@ document.addEventListener('DOMContentLoaded', () => {
             if (percentage < 1) {
                 window.requestAnimationFrame(step);
             } else {
-                element.textContent = endValue; // Zorg voor de exacte eindwaarde
+                element.textContent = endValue;
             }
         };
 
         window.requestAnimationFrame(step);
     }
 
-    /**
-     * Laadt de kaartentellers en start de animatie.
-     */
+
     function loadCardCounts() {
         const counts = mockData.cardCounts;
         const cardContainer = document.querySelector('.cards-row');
 
-        // Update en animeer elk tel-element
         animateCount(document.getElementById('count-cyber'), counts.cyber);
         animateCount(document.getElementById('count-traffic'), counts.traffic);
         animateCount(document.getElementById('count-iot'), counts.iot);
 
-        // Geef de kaartenrij een 'loaded' klasse om de fade-in/slide-down animatie te starten
         cardContainer.classList.add('loaded');
     }
 
-    /**
-     * Genereert de bars, stelt de hoogte in en animeert.
-     */
+   //Bars van grafiek instellen
     function loadBarChart() {
         const chartContainer = document.getElementById('bar-chart');
-        chartContainer.innerHTML = ''; // Maak de container leeg
+        chartContainer.innerHTML = '';
         const data = mockData.barChartData;
 
         // Bepaal de maximale waarde om de hoogtes te schalen
         const maxVal = Math.max(...data.map(item => item.value));
-        const maxHeight = 250; // Maximale pixelhoogte voor de hoogste staaf
+        const maxHeight = 250;
 
         data.forEach((item, index) => {
             const bar = document.createElement('div');
             bar.className = `bar ${item.colorClass}`;
-            bar.title = `${item.label}: ${item.value}`; // Tooltip voor info
+            bar.title = `${item.label}: ${item.value}`;
 
-            // De werkelijke hoogte wordt berekend op basis van de maxVal
             const targetHeight = (item.value / maxVal) * maxHeight;
 
-            // Voeg de bar toe aan de DOM
             chartContainer.appendChild(bar);
 
-            // Forceer een reflow (browserherberekening) om ervoor te zorgen dat de browser
-            // de initiële hoogte van 0 ziet voordat we de doelgrootte instellen.
-            // Dit is nodig om de CSS-overgang te triggeren.
             void bar.offsetWidth;
 
-            // Stel de uiteindelijke hoogte in na de reflow om de CSS-animatie te starten
             bar.style.height = `${targetHeight}px`;
         });
     }
 
-    /**
-     * Laadt de sensorenlijst in de zijbalk.
-     */
+    //Sensoren lijst laden
     function loadSensorsList() {
         const listContainer = document.getElementById('sensors-list');
         listContainer.innerHTML = ''; // Maak de container leeg
@@ -125,11 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             listContainer.appendChild(item);
         });
 
-        // Geef de sensorenlijst een 'loaded' klasse om de fade-in/slide-in animatie te starten
         sensorContainer.classList.add('loaded');
     }
-
-    // 3. Start de functies voor de initiële animatie en het laden van de data
     loadCardCounts();
     loadBarChart();
     loadSensorsList();
