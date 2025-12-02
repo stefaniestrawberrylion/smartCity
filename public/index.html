@@ -16,21 +16,21 @@
         <div class="card card-cyber">
             <div class="card-title">Cyber Aanvallen <span class="icon">!</span></div>
             <div class="card-content">
-                <span class="count">100</span>
+                <span class="count" id="count-cyber">0</span>
                 <button class="button">Bekijk Meer</button>
             </div>
         </div>
         <div class="card card-traffic">
             <div class="card-title">Verkeersproblemen <span class="icon">⚠</span></div>
             <div class="card-content">
-                <span class="count">50</span>
+                <span class="count" id="count-traffic">0</span>
                 <button class="button">Bekijk Meer</button>
             </div>
         </div>
         <div class="card card-iot">
-            <div class="card-title">storingen in IoT-apparaten <span class="icon">📶</span></div>
+            <div class="card-title">Storingen in IoT-apparaten <span class="icon">📶</span></div>
             <div class="card-content">
-                <span class="count">20</span>
+                <span class="count" id="count-iot">0</span>
                 <button class="button">Bekijk Meer</button>
             </div>
         </div>
@@ -39,34 +39,15 @@
 
     <div class="main-content-row">
         <div class="chart-area">
-            <div class="bar-chart-representation">
-                <div class="bar bar-1"></div>
-                <div class="bar bar-2"></div>
-                <div class="bar bar-3"></div>
-                <div class="bar bar-4"></div>
+            <div class="bar-chart-representation" id="bar-chart">
             </div>
         </div>
 
-        <div class="sensors-list">
-            <div class="sensor-item active">
-                Sensor 1
-                <span class="status active">Actief •</span>
-            </div>
-            <div class="sensor-item active">
-                Sensor 2
-                <span class="status active">Actief •</span>
-            </div>
-            <div class="sensor-item active">
-                Sensor 3
-                <span class="status active">Actief •</span>
-            </div>
-            <div class="sensor-item inactive">
-                Sensor 4
-                <span class="status inactive">Inactief •</span>
-            </div>
+        <div class="sensors-list" id="sensors-list">
         </div>
     </div>
 </div>
+
 <script src="/script.js"></script>
 </body>
 </html>
