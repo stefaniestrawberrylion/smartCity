@@ -1,195 +1,146 @@
-/* Algemene Reset en Layout */
+/* Algemene stijlen */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: sans-serif;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    background-color: #f0f0f0; /* Lichte achtergrond */
+    color: #333;
 }
 
 .dashboard-container {
-    width: 100%;
-    max-width: 1200px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+    padding: 20px;
 }
 
 /* Header */
 .dashboard-header {
-    background-color: #38761d;
+    background-color: #38761d; /* Donkergroen */
     color: white;
-    padding: 15px;
+    padding: 20px;
+    text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Kaarten (Cards) */
+/* Kaarten Rij (Flexbox) */
 .cards-row {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    gap: 20px;
-    /* Initieel onzichtbaar voor animatie */
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.cards-row.loaded {
-    /* Status na het laden/animatie */
-    opacity: 1;
-    transform: translateY(0);
+    gap: 20px; /* Ruimte tussen de kaarten */
+    margin-bottom: 20px;
 }
 
 .card {
-    flex: 1;
-    background-color: #e6ffe6;
+    background-color: #e5ffe0; /* Lichtgroene/Beige achtergrond */
     padding: 15px;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 1; /* Zorgt ervoor dat kaarten even breed zijn */
+    min-width: 200px; /* Minimale breedte voor kaarten */
 }
 
 .card-empty {
-    /* Voor de lege kaart rechtsboven */
-    background-color: #f9f9f9;
-    visibility: hidden; /* Zorgt ervoor dat het de ruimte inneemt, maar onzichtbaar is */
+    background-color: #d9e3d6; /* Beige/Grijze kleur uit de afbeelding */
 }
 
 .card-title {
     font-weight: bold;
-    color: #38761d;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    background-color: white;
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 1.2em;
 }
 
 .card-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .count {
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
-    color: #4a4a4a;
-    line-height: 1;
 }
 
 .button {
-    background-color: #93c47d;
-    color: #38761d;
+    background-color: #6aa84f; /* Groene knop */
+    color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 3px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #70a758;
-}
-
-/* Hoofd Inhoud (Grafiek en Sensoren) */
-.main-content-row {
-    display: flex;
-    padding: 0 20px 20px 20px;
-    gap: 20px;
-}
-
-.chart-area {
-    flex: 3;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Zorg ervoor dat de grafiek onderaan begint */
-    min-height: 300px; /* Voldoende hoogte voor de grafiek */
-}
-
-.bar-chart-representation {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    height: 100%;
-}
-
-.bar {
-    width: 25%; /* 4 bars = 25% elk */
-    background-color: #5b3256; /* Standaardkleur */
-    border-radius: 3px 3px 0 0;
-
-    /* Animatie setup */
-    height: 0; /* Beginhoogte voor animatie */
-    transition: height 1s ease-out;
-}
-
-/* Specifieke kleuren voor de bars (uit de afbeelding) */
-.bar.color-1 { background-color: #8c564b; } /* Paars in de afbeelding */
-.bar.color-2 { background-color: #674172; } /* Donkerpaars in de afbeelding */
-.bar.color-3 { background-color: #c9ad2a; } /* Geel in de afbeelding */
-.bar.color-4 { background-color: #d62728; } /* Rood in de afbeelding */
-
-/* Sensoren Lijst */
-.sensors-list {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
-    /* Initieel onzichtbaar voor animatie */
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s; /* Vertraagde animatie */
-}
-
-.sensors-list.loaded {
-    /* Status na het laden/animatie */
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.sensor-item {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 500;
-}
-
-.sensor-item:last-child {
-    border-bottom: none;
-}
-
-.status {
-    font-weight: bold;
     font-size: 0.9em;
 }
 
+/* Hoofdcontent Rij (Flexbox) */
+.main-content-row {
+    display: flex;
+    gap: 20px;
+}
+
+/* Grafiek Gebied */
+.chart-area {
+    flex: 3; /* Neemt meer ruimte in dan de sensoren-lijst */
+    background-color: #ececec; /* Grijze achtergrond voor de grafiek */
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end; /* Zorgt ervoor dat de balken op de bodem beginnen */
+    justify-content: space-around;
+}
+
+/* Representatie van de balken */
+.bar-chart-representation {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    height: 100%;
+    width: 80%; /* Vul niet de volledige breedte, zodat er ruimte is */
+    padding-bottom: 10px;
+}
+
+.bar {
+    width: 20%;
+    /* De hoogte en kleur zijn een schatting van de afbeelding */
+    background-color: #674ea7;
+    border-radius: 2px;
+}
+
+.bar-1 { height: 60%; background-color: #993399; } /* Paars */
+.bar-2 { height: 90%; background-color: #674ea7; } /* Donkerblauw/Paars */
+.bar-3 { height: 50%; background-color: #f1c232; } /* Oranje */
+.bar-4 { height: 65%; background-color: #cc0000; } /* Rood/Bordeaux */
+
+
+/* Sensoren Lijst */
+.sensors-list {
+    flex: 1; /* Neemt minder ruimte in dan de grafiek */
+    background-color: #d9e3d6; /* Beige/Grijze achtergrond */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sensor-item {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .status.active {
-    color: #38761d;
+    color: #6aa84f; /* Groen */
+    font-weight: bold;
 }
 
 .status.inactive {
-    color: #d62728;
-}
-
-/* Nummer animatie (voor de kaarten) */
-.count-animating {
-    transition: all 0.5s ease-in-out;
+    color: #cc0000; /* Rood */
+    font-weight: bold;
 }
